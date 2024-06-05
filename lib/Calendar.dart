@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import 'event.dart';
+
 class Calclass extends StatelessWidget {
   const Calclass({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class _calState extends State<cal> {
   DateTime today = DateTime.now();
 
   ///map to store events
-  Map<DateTime, List<Event>> events = {};
+  Map<DateTime, List<Eventss>> events = {};
 
   ///function for onday selected
   void _dayselected(DateTime day, DateTime focusedDay) {
@@ -37,6 +39,10 @@ class _calState extends State<cal> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
         body: SafeArea(
           child: Column(
             children: [
