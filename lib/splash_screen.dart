@@ -18,7 +18,11 @@ class _Splash_ScreenState extends State<Splash_Screen> {
             Row(
               children: [
                 Spacer(),
-                ElevatedButton(onPressed: () {}, child: Text('Calendar App')),
+                ElevatedButton(
+                    onPressed: () {
+                      print("paka");
+                    },
+                    child: Text('Calendar App')),
                 Spacer(),
               ],
             ),
