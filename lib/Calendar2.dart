@@ -3,14 +3,14 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'event.dart';
 
-class cal extends StatefulWidget {
-  const cal({Key? key}) : super(key: key);
+class Calendar2 extends StatefulWidget {
+  const Calendar2({Key? key}) : super(key: key);
 
   @override
-  State<cal> createState() => _calState();
+  State<Calendar2> createState() => _Calendar2State();
 }
 
-class _calState extends State<cal> {
+class _Calendar2State extends State<Calendar2> {
   DateTime today = DateTime.now();
 
   ///map to store events
