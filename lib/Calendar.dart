@@ -22,6 +22,9 @@ class cal extends StatefulWidget {
 class _calState extends State<cal> {
   DateTime today = DateTime.now();
 
+  ///map to store events
+  Map<DateTime, List<Event>> events = {};
+
   ///function for onday selected
   void _dayselected(DateTime day, DateTime focusedDay) {
     setState(() {
