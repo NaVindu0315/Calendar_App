@@ -20,6 +20,16 @@ class cal extends StatefulWidget {
 }
 
 class _calState extends State<cal> {
+  DateTime today = DateTime.now();
+
+  ///function for onday selected
+  void _dayselected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      today = day;
+    });
+    print(day);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,16 +40,21 @@ class _calState extends State<cal> {
               SizedBox(
                 height: 40.0,
               ),
+              Text('Selected : ' + today.toString()),
+              SizedBox(
+                height: 40.0,
+              ),
               Container(
                 child: TableCalendar(
                   rowHeight: 70,
                   headerStyle: HeaderStyle(
                       formatButtonVisible: false, titleCentered: true),
                   availableGestures: AvailableGestures.all,
-                  focusedDay: DateTime.now(),
+                  focusedDay: today,
+                  selectedDayPredicate: (day) => isSameDay(day, today),
                   firstDay: DateTime.utc(2010, 10, 16),
                   lastDay: DateTime.utc(2099, 12, 31),
-                  //onDaySelected: ,
+                  onDaySelected: _dayselected,
                 ),
               )
             ],
