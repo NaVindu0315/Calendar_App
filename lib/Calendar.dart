@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Calendar extends StatefulWidget {
-  const Calendar({Key? key}) : super(key: key);
+class cal extends StatefulWidget {
+  const cal({Key? key}) : super(key: key);
 
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<cal> createState() => _calState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _calState extends State<cal> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return Scaffold(
+      body: Column(),
+    );
   }
 }
