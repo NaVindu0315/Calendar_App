@@ -24,17 +24,26 @@ class _calState extends State<cal> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            Text('apaka'),
-            Container(
-              child: TableCalendar(
-                focusedDay: DateTime.now(),
-                firstDay: DateTime.utc(2010, 10, 16),
-                lastDay: DateTime.utc(2099, 12, 31),
+        body: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 40.0,
               ),
-            )
-          ],
+              Container(
+                child: TableCalendar(
+                  rowHeight: 70,
+                  headerStyle: HeaderStyle(
+                      formatButtonVisible: false, titleCentered: true),
+                  availableGestures: AvailableGestures.all,
+                  focusedDay: DateTime.now(),
+                  firstDay: DateTime.utc(2010, 10, 16),
+                  lastDay: DateTime.utc(2099, 12, 31),
+                  //onDaySelected: ,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
