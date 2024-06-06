@@ -1,4 +1,5 @@
 import 'package:calendar_navindu/Calendar.dart';
+import 'package:calendar_navindu/Calendar2.dart';
 import 'package:flutter/material.dart';
 
 class Spl_Screen extends StatelessWidget {
@@ -34,7 +35,8 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => cal()),
+                        MaterialPageRoute(
+                            builder: (context) => Calendar_Widget()),
                       );
                     },
                     child: Text('Calendar App')),

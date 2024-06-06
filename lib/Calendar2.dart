@@ -22,6 +22,12 @@ class Calendar2 extends StatefulWidget {
 }
 
 class _Calendar2State extends State<Calendar2> {
+  ///for events
+  TextEditingController _eventcontroller = new TextEditingController();
+  String Eventname = "";
+
+  ///events end
+
   DateTime today = DateTime.now();
 
   ///map to store events
@@ -48,36 +54,46 @@ class _Calendar2State extends State<Calendar2> {
                   return AlertDialog(
                     scrollable: true,
                     title: Text("Add new Event"),
-                    content: Text("pako"),
+                    content: Padding(
+                      padding: EdgeInsets.all(8),
+                      child: TextField(
+                        controller: _eventcontroller,
+                      ),
+                    ),
+                    actions: [
+                      ElevatedButton(onPressed: () {}, child: Text("add")),
+                    ],
                   );
                 });
           },
           child: Icon(Icons.add),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 40.0,
-              ),
-              Text('Selected : ' + today.toString()),
-              SizedBox(
-                height: 40.0,
-              ),
-              Container(
-                child: TableCalendar(
-                  rowHeight: 70,
-                  headerStyle: HeaderStyle(
-                      formatButtonVisible: false, titleCentered: true),
-                  availableGestures: AvailableGestures.all,
-                  focusedDay: today,
-                  selectedDayPredicate: (day) => isSameDay(day, today),
-                  firstDay: DateTime.utc(2010, 10, 16),
-                  lastDay: DateTime.utc(2099, 12, 31),
-                  onDaySelected: _dayselected,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 40.0,
                 ),
-              )
-            ],
+                Text('Selected : ' + today.toString()),
+                SizedBox(
+                  height: 40.0,
+                ),
+                Container(
+                  child: TableCalendar(
+                    rowHeight: 70,
+                    headerStyle: HeaderStyle(
+                        formatButtonVisible: false, titleCentered: true),
+                    availableGestures: AvailableGestures.all,
+                    focusedDay: today,
+                    selectedDayPredicate: (day) => isSameDay(day, today),
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2099, 12, 31),
+                    onDaySelected: _dayselected,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
