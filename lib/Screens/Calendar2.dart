@@ -171,6 +171,7 @@ class _Calendar2State extends State<Calendar2> {
                           _selectedEvets.value =
                               _getEventsforDay(_selectedDay!);
                           _eventcontroller.clear();
+                          _notecontroller.clear();
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
@@ -234,7 +235,7 @@ class _Calendar2State extends State<Calendar2> {
                 Text('Selected : ' + today.toString()),*/
 
                 SizedBox(
-                  height: 40.0,
+                  height: 10.0,
                 ),
                 Container(
                   child: TableCalendar(
@@ -273,7 +274,7 @@ class _Calendar2State extends State<Calendar2> {
                               margin: EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Colors.green,
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(12),
                               ),
