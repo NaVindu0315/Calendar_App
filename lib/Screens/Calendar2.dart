@@ -112,12 +112,38 @@ class _Calendar2State extends State<Calendar2> {
                             Navigator.pop(context);
                           },
                           child: Text("Add Event")),
+                      ElevatedButton.icon(
+                        icon: Icon(Icons.add), // Add your icon here
+                        label: Text(
+                            'PUblic and Bank'), // Add your button text here
+                        onPressed: () {
+                          // Add your button press action here
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue, // Button color
+                          onPrimary: Colors.white, // Text color
+                        ),
+                      ),
+                      ElevatedButton.icon(
+                        icon: Icon(Icons.add), // Add your icon here
+                        label: Text('Mercantile'), // Add your button text here
+                        onPressed: () {
+                          // Add your button press action here
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue, // Button color
+                          onPrimary: Colors.white, // Text color
+                        ),
+                      ),
                     ],
                   );
                 });
           },
           child: Icon(Icons.add),
         ),
+
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -151,6 +177,7 @@ class _Calendar2State extends State<Calendar2> {
                 SizedBox(
                   height: 10.0,
                 ),
+
                 Flexible(
                   fit: FlexFit.loose,
                   child: ValueListenableBuilder<List<Eventss>>(
@@ -179,6 +206,8 @@ class _Calendar2State extends State<Calendar2> {
                     },
                   ),
                 ),
+
+                ///holiday
                 Flexible(
                   fit: FlexFit.loose,
                   child: ValueListenableBuilder<List<Eventss>>(
