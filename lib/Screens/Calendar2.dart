@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../Classes/event.dart';
+import '../Services/local_notifications.dart';
 
 class Calendar_Widget extends StatelessWidget {
   const Calendar_Widget({Key? key}) : super(key: key);
@@ -206,6 +207,10 @@ class _Calendar2State extends State<Calendar2> {
                           });
                           _selectedEvets.value =
                               _getEventsforDay(_selectedDay!);
+                          LocalNotifications.showSimpleNotification(
+                              title: _eventcontroller.text,
+                              body: "Event Added to Calendar",
+                              payload: _notecontroller.text);
                           _eventcontroller.clear();
                           _notecontroller.clear();
                           Navigator.pop(context);
@@ -358,7 +363,7 @@ class _Calendar2State extends State<Calendar2> {
                                 ),
                                 subtitle: Text(
                                   '${value[index].note}\nDate: ${value[index].strtdate}\n'
-                                  'Start : ${value[index].strtime.hour}:${value[index].strtime.minute}0 \nEnd : ${value[index].entime.hour}:${value[index].strtime.minute}0',
+                                  'Start : ${value[index].strtime.hour}:${value[index].strtime.minute} \nEnd : ${value[index].entime.hour}:${value[index].strtime.minute}',
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.white),
                                   maxLines:

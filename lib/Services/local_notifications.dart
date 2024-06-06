@@ -52,6 +52,7 @@ class LocalNotifications {
             channelDescription: 'your channel description',
             importance: Importance.max,
             priority: Priority.high,
+            icon: 'logo',
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
