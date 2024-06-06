@@ -163,7 +163,10 @@ class _Calendar2State extends State<Calendar2> {
                         label: Text('Add Event'), //
                         onPressed: () {
                           events.addAll({
-                            _selectedDay!: [Eventss(_eventcontroller.text)]
+                            _selectedDay!: [
+                              Eventss(_eventcontroller.text,
+                                  _notecontroller.text, _selectedDay!)
+                            ]
                           });
                           _selectedEvets.value =
                               _getEventsforDay(_selectedDay!);
@@ -254,6 +257,8 @@ class _Calendar2State extends State<Calendar2> {
                 SizedBox(
                   height: 10.0,
                 ),
+
+                ///holdiday
                 Flexible(
                   fit: FlexFit.loose,
                   child: ValueListenableBuilder<List<Holidays>>(
@@ -268,12 +273,18 @@ class _Calendar2State extends State<Calendar2> {
                               margin: EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 4),
                               decoration: BoxDecoration(
+                                color: Colors.red,
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: ListTile(
                                 onTap: () => print(""),
-                                title: Text('${value[index].holidayname}'),
+                                title: Text(
+                                  '${value[index].holidayname}',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             );
                           },
@@ -303,6 +314,11 @@ class _Calendar2State extends State<Calendar2> {
                               child: ListTile(
                                 onTap: () => print(""),
                                 title: Text('${value[index].title}'),
+                                subtitle: Text(
+                                  '${value[index].note}\nDate: ${value[index].strtdate}',
+                                  maxLines:
+                                      2, // Limit subtitle lines to avoid overflow
+                                ),
                               ),
                             );
                           },
