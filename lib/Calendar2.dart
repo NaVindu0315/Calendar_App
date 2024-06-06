@@ -61,7 +61,16 @@ class _Calendar2State extends State<Calendar2> {
                       ),
                     ),
                     actions: [
-                      ElevatedButton(onPressed: () {}, child: Text("add")),
+                      ElevatedButton(
+                          onPressed: () {
+                            ///adding event
+                            events.addAll({
+                              today!: [Eventss(_eventcontroller.text)]
+                            });
+                            _eventcontroller.clear();
+                            Navigator.pop(context);
+                          },
+                          child: Text("Add Event")),
                     ],
                   );
                 });
