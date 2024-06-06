@@ -157,7 +157,7 @@ class _Calendar2State extends State<Calendar2> {
                     valueListenable: _selectedEvets,
                     builder: (context, value, _) {
                       return Container(
-                        height: 200, // Adjust this value as needed
+                        height: 200,
                         child: ListView.builder(
                           itemCount: value.length,
                           itemBuilder: (context, index) {
@@ -178,7 +178,35 @@ class _Calendar2State extends State<Calendar2> {
                       );
                     },
                   ),
-                )
+                ),
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: ValueListenableBuilder<List<Eventss>>(
+                    valueListenable: _selectedEvets,
+                    builder: (context, value, _) {
+                      return Container(
+                        height: 200,
+                        child: ListView.builder(
+                          itemCount: value.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 4),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: ListTile(
+                                onTap: () => print(""),
+                                title: Text('${value[index].title}'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
