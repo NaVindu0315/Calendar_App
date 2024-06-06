@@ -25,6 +25,7 @@ class Calendar2 extends StatefulWidget {
 class _Calendar2State extends State<Calendar2> {
   ///for events
   TextEditingController _eventcontroller = new TextEditingController();
+  TextEditingController _notecontroller = new TextEditingController();
   String Eventname = "";
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
@@ -68,6 +69,7 @@ class _Calendar2State extends State<Calendar2> {
         _holidayss.value = _getholidaysforDay(selectedDay);
       });
     }
+    print(selectedDay);
   }
 
 /*
@@ -116,6 +118,7 @@ class _Calendar2State extends State<Calendar2> {
 
         ///floating action button to add events
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xff237ACC),
           onPressed: () {
             showDialog(
                 context: context,
@@ -123,25 +126,55 @@ class _Calendar2State extends State<Calendar2> {
                   return AlertDialog(
                     scrollable: true,
                     title: Text("Add new Event"),
-                    content: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: TextField(
-                        controller: _eventcontroller,
-                      ),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextField(
+                          controller: _eventcontroller,
+                          decoration: InputDecoration(
+                            labelText: 'Event Name',
+                            // Add hint here
+                          ),
+                        ),
+                        /*   Row(
+                          children: [
+                            TextButton(
+                              onPressed: () async {},
+                              child: Text('Select Start Time'),
+                            ),
+                            TextButton(
+                              onPressed: () async {},
+                              child: Text('Select End Time'),
+                            ),
+                          ],
+                        ),*/
+                        TextField(
+                          controller: _notecontroller,
+                          decoration: InputDecoration(
+                            labelText: 'Note',
+                            // Add hint here
+                          ),
+                        ),
+                      ],
                     ),
                     actions: [
-                      ElevatedButton(
-                          onPressed: () {
-                            ///adding event
-                            events.addAll({
-                              _selectedDay!: [Eventss(_eventcontroller.text)]
-                            });
-                            _selectedEvets.value =
-                                _getEventsforDay(_selectedDay!);
-                            _eventcontroller.clear();
-                            Navigator.pop(context);
-                          },
-                          child: Text("Add Event")),
+                      ElevatedButton.icon(
+                        icon: Icon(Icons.event),
+                        label: Text('Add Event'), //
+                        onPressed: () {
+                          events.addAll({
+                            _selectedDay!: [Eventss(_eventcontroller.text)]
+                          });
+                          _selectedEvets.value =
+                              _getEventsforDay(_selectedDay!);
+                          _eventcontroller.clear();
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xff237ACC), // Button color
+                          onPrimary: Colors.white, // Text color
+                        ),
+                      ),
 
                       ///public and Bank
                       ElevatedButton.icon(
