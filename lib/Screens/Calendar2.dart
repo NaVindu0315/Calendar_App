@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'event.dart';
+import '../Classes/event.dart';
 
 class Calendar_Widget extends StatelessWidget {
   const Calendar_Widget({Key? key}) : super(key: key);
@@ -108,7 +108,7 @@ class _Calendar2State extends State<Calendar2> {
                             });
                             _selectedEvets.value =
                                 _getEventsforDay(_selectedDay!);
-
+                            _eventcontroller.clear();
                             Navigator.pop(context);
                           },
                           child: Text("Add Event")),

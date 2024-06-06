@@ -1,5 +1,5 @@
 import 'package:calendar_navindu/Calendar.dart';
-import 'package:calendar_navindu/Calendar2.dart';
+import 'package:calendar_navindu/Screens/Calendar2.dart';
 import 'package:flutter/material.dart';
 
 class Spl_Screen extends StatelessWidget {
