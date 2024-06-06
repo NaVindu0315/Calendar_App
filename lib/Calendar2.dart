@@ -44,11 +44,20 @@ class _Calendar2State extends State<Calendar2> {
   }
 
   ///function for onday selected
-  void _dayselected(DateTime day, DateTime focusedDay) {
+  /*void _dayselected(DateTime day, DateTime focusedDay) {
     setState(() {
       _focusedDay = day;
     });
     print(day);
+  }*/
+  void _dayselected(DateTime selectedDay, DateTime focusedDay) {
+    if (!isSameDay(_selectedDay, selectedDay)) {
+      setState(() {
+        _selectedDay = selectedDay;
+        _focusedDay = focusedDay;
+        _selectedEvets.value = _getEventsforDay(selectedDay);
+      });
+    }
   }
 
 /*
@@ -64,7 +73,6 @@ class _Calendar2State extends State<Calendar2> {
     super.initState();
     _selectedDay = _focusedDay;
     _selectedEvets = ValueNotifier(_getEventsforDay(_selectedDay!));
-    // ... rest of your initState code
   }
 
   @override
