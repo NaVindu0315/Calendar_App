@@ -26,6 +26,9 @@ class _Calendar2State extends State<Calendar2> {
   TextEditingController _eventcontroller = new TextEditingController();
   String Eventname = "";
 
+  ///to display
+  late final ValueNotifier<List<Eventss>> _selectedEvets;
+
   ///events end
 
   DateTime today = DateTime.now();
@@ -39,6 +42,13 @@ class _Calendar2State extends State<Calendar2> {
       today = day;
     });
     print(day);
+  }
+
+  @override
+  void initstate() {
+    super.initState();
+    //_selectedday = _focuedday
+    _selectedEvets = ValueNotifier(_getEventsforDay(today));
   }
 
   @override
