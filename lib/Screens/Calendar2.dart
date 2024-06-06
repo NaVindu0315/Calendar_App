@@ -173,10 +173,38 @@ class _Calendar2State extends State<Calendar2> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
+                /*  SizedBox(
                   height: 40.0,
                 ),
-                Text('Selected : ' + today.toString()),
+                Text('Selected : ' + today.toString()),*/
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: ValueListenableBuilder<List<Holidays>>(
+                    valueListenable: _holidayss,
+                    builder: (context, value, _) {
+                      return Container(
+                        height: 80,
+                        child: ListView.builder(
+                          itemCount: value.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 4),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: ListTile(
+                                onTap: () => print(""),
+                                title: Text('${value[index].holidayname}'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 40.0,
                 ),
@@ -232,34 +260,6 @@ class _Calendar2State extends State<Calendar2> {
                 ),
 
                 ///holiday
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: ValueListenableBuilder<List<Holidays>>(
-                    valueListenable: _holidayss,
-                    builder: (context, value, _) {
-                      return Container(
-                        height: 200,
-                        child: ListView.builder(
-                          itemCount: value.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 4),
-                              decoration: BoxDecoration(
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: ListTile(
-                                onTap: () => print(""),
-                                title: Text('${value[index].holidayname}'),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ),
               ],
             ),
           ),
