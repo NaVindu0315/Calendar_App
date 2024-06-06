@@ -1,7 +1,6 @@
 
 Navindu Lakshan 
 
-6 Hours. Please Check My - [commit History](https://github.com/NaVindu0315/Calendar_App/graphs/contributors?from=2024-05-26&to=2024-06-06&type=c)
 
 GitHub - [Calendar App](https://github.com/NaVindu0315/Calendar_App)
 
