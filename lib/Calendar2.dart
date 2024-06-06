@@ -25,6 +25,8 @@ class _Calendar2State extends State<Calendar2> {
   ///for events
   TextEditingController _eventcontroller = new TextEditingController();
   String Eventname = "";
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
 
   ///to display
   late final ValueNotifier<List<Eventss>> _selectedEvets;
@@ -44,17 +46,25 @@ class _Calendar2State extends State<Calendar2> {
   ///function for onday selected
   void _dayselected(DateTime day, DateTime focusedDay) {
     setState(() {
-      today = day;
+      _focusedDay = day;
     });
     print(day);
   }
 
+/*
   @override
   void initstate() {
     super.initState();
-    today = DateTime.now();
-    //_selectedday = _focuedday
-    _selectedEvets = ValueNotifier(_getEventsforDay(today));
+    // today = DateTime.now();
+    _selectedDay = _focusedDay;
+    _selectedEvets = ValueNotifier(_getEventsforDay(_selectedDay!));
+  }*/
+  @override
+  void initState() {
+    super.initState();
+    _selectedDay = _focusedDay;
+    _selectedEvets = ValueNotifier(_getEventsforDay(_selectedDay!));
+    // ... rest of your initState code
   }
 
   @override
@@ -86,9 +96,10 @@ class _Calendar2State extends State<Calendar2> {
                           onPressed: () {
                             ///adding event
                             events.addAll({
-                              today!: [Eventss(_eventcontroller.text)]
+                              _selectedDay!: [Eventss(_eventcontroller.text)]
                             });
-                            _selectedEvets.value = _getEventsforDay(today);
+                            _selectedEvets.value =
+                                _getEventsforDay(_selectedDay!);
                             _eventcontroller.clear();
                             Navigator.pop(context);
                           },
@@ -116,39 +127,21 @@ class _Calendar2State extends State<Calendar2> {
                     headerStyle: HeaderStyle(
                         formatButtonVisible: false, titleCentered: true),
                     availableGestures: AvailableGestures.all,
-                    focusedDay: today,
-                    selectedDayPredicate: (day) => isSameDay(day, today),
+                    focusedDay: _focusedDay,
+                    selectedDayPredicate: (day) => isSameDay(_focusedDay, day),
+                    startingDayOfWeek: StartingDayOfWeek.monday,
                     firstDay: DateTime.utc(2010, 10, 16),
                     lastDay: DateTime.utc(2099, 12, 31),
                     onDaySelected: _dayselected,
+                    onPageChanged: (focusedDay) {
+                      _focusedDay = focusedDay;
+                    },
                     eventLoader: _getEventsforDay,
                   ),
                 ),
                 SizedBox(
                   height: 10.0,
                 ),
-                Expanded(
-                  child: ValueListenableBuilder<List<Eventss>>(
-                      valueListenable: _selectedEvets,
-                      builder: (context, value, _) {
-                        return ListView.builder(
-                            itemCount: value.length,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 4),
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: ListTile(
-                                  onTap: () => print(""),
-                                  title: Text('${value[index]}'),
-                                ),
-                              );
-                            });
-                      }),
-                )
               ],
             ),
           ),
