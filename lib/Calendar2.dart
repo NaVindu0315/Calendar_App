@@ -100,7 +100,7 @@ class _Calendar2State extends State<Calendar2> {
                             });
                             _selectedEvets.value =
                                 _getEventsforDay(_selectedDay!);
-                            _eventcontroller.clear();
+
                             Navigator.pop(context);
                           },
                           child: Text("Add Event")),
@@ -113,6 +113,7 @@ class _Calendar2State extends State<Calendar2> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
                   height: 40.0,
@@ -142,6 +143,34 @@ class _Calendar2State extends State<Calendar2> {
                 SizedBox(
                   height: 10.0,
                 ),
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: ValueListenableBuilder<List<Eventss>>(
+                    valueListenable: _selectedEvets,
+                    builder: (context, value, _) {
+                      return Container(
+                        height: 200, // Adjust this value as needed
+                        child: ListView.builder(
+                          itemCount: value.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 4),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: ListTile(
+                                onTap: () => print(""),
+                                title: Text('${value[index].title}'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                )
               ],
             ),
           ),
