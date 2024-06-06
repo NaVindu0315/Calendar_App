@@ -3,6 +3,17 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'event.dart';
 
+class Calendar_Widget extends StatelessWidget {
+  const Calendar_Widget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Calendar2(),
+    );
+  }
+}
+
 class Calendar2 extends StatefulWidget {
   const Calendar2({Key? key}) : super(key: key);
 

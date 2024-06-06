@@ -1,6 +1,17 @@
 import 'package:calendar_navindu/Calendar.dart';
 import 'package:flutter/material.dart';
 
+class Spl_Screen extends StatelessWidget {
+  const Spl_Screen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Splash_Screen(),
+    );
+  }
+}
+
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({Key? key}) : super(key: key);
 
