@@ -130,16 +130,10 @@ class _Calendar2State extends State<Calendar2> {
                         label: Text('Public and Bank Holiday '), //
                         onPressed: () {
                           //
-                          /* events.addAll({
-                            _selectedDay!: [Eventss(_eventcontroller.text)]
-                          });*/
 
                           holievents.addAll({
                             _selectedDay!: [Holidays('Public and Bank Holiday')]
                           });
-
-                          /*_selectedEvets.value =
-                              _getEventsforDay(_selectedDay!);*/
 
                           _holidayss.value = _getholidaysforDay(_selectedDay!);
                           Navigator.pop(context);
@@ -154,6 +148,12 @@ class _Calendar2State extends State<Calendar2> {
                         label: Text('Mercantile Holiday'), //
                         onPressed: () {
                           //
+
+                          holievents.addAll({
+                            _selectedDay!: [Holidays('Mercantile Holiday')]
+                          });
+
+                          _holidayss.value = _getholidaysforDay(_selectedDay!);
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
