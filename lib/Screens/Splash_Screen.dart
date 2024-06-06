@@ -24,7 +24,7 @@ class Splash_Screen extends StatefulWidget {
 class _Splash_ScreenState extends State<Splash_Screen>
     with SingleTickerProviderStateMixin {
   @override
-  void initstate() {
+  void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(Duration(seconds: 5), () {
@@ -33,6 +33,12 @@ class _Splash_ScreenState extends State<Splash_Screen>
         MaterialPageRoute(builder: (context) => Calendar_Widget()),
       );
     });
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
   }
 
   @override
@@ -50,7 +56,7 @@ class _Splash_ScreenState extends State<Splash_Screen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Navindu',
+              'Calendar',
               style: TextStyle(fontSize: 40, color: Colors.white),
             )
           ],
