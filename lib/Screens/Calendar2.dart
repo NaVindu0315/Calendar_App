@@ -38,6 +38,8 @@ class _Calendar2State extends State<Calendar2> {
   ///events end
 
   DateTime today = DateTime.now();
+  TimeOfDay starttime = TimeOfDay.now();
+  TimeOfDay endtime = TimeOfDay.now();
 
   ///map to store events
   Map<DateTime, List<Eventss>> events = {};
@@ -136,18 +138,48 @@ class _Calendar2State extends State<Calendar2> {
                             // Add hint here
                           ),
                         ),
-                        /*   Row(
-                          children: [
-                            TextButton(
-                              onPressed: () async {},
-                              child: Text('Select Start Time'),
-                            ),
-                            TextButton(
-                              onPressed: () async {},
-                              child: Text('Select End Time'),
-                            ),
-                          ],
-                        ),*/
+                        ElevatedButton.icon(
+                          icon: Icon(Icons.lock_clock),
+                          onPressed: () async {
+                            final TimeOfDay? timofday = await showTimePicker(
+                              context: context,
+                              initialTime: starttime,
+                              initialEntryMode: TimePickerEntryMode.dial,
+                            );
+                            if (timofday != null) {
+                              setState(() {
+                                starttime = timofday;
+                              });
+                            }
+                            print(starttime);
+                          },
+                          label: Text('Select Start Time'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xff237ACC), // Button color
+                            onPrimary: Colors.white, // Text color
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                          icon: Icon(Icons.lock_clock),
+                          onPressed: () async {
+                            final TimeOfDay? timofday = await showTimePicker(
+                              context: context,
+                              initialTime: endtime,
+                              initialEntryMode: TimePickerEntryMode.dial,
+                            );
+                            if (timofday != null) {
+                              setState(() {
+                                endtime = timofday;
+                              });
+                            }
+                            print(endtime);
+                          },
+                          label: Text('Select End Time'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xff237ACC), // Button color
+                            onPrimary: Colors.white, // Text color
+                          ),
+                        ),
                         TextField(
                           controller: _notecontroller,
                           decoration: InputDecoration(
@@ -164,8 +196,12 @@ class _Calendar2State extends State<Calendar2> {
                         onPressed: () {
                           events.addAll({
                             _selectedDay!: [
-                              Eventss(_eventcontroller.text,
-                                  _notecontroller.text, _selectedDay!)
+                              Eventss(
+                                  _eventcontroller.text,
+                                  _notecontroller.text,
+                                  _selectedDay!,
+                                  starttime,
+                                  endtime)
                             ]
                           });
                           _selectedEvets.value =
@@ -321,11 +357,12 @@ class _Calendar2State extends State<Calendar2> {
                                       fontSize: 18, color: Colors.white),
                                 ),
                                 subtitle: Text(
-                                  '${value[index].note}\nDate: ${value[index].strtdate}',
+                                  '${value[index].note}\nDate: ${value[index].strtdate}\n'
+                                  'Start : ${value[index].strtime.hour}:${value[index].strtime.minute}0 \nEnd : ${value[index].entime.hour}:${value[index].strtime.minute}0',
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.white),
                                   maxLines:
-                                      2, // Limit subtitle lines to avoid overflow
+                                      4, // Limit subtitle lines to avoid overflow
                                 ),
                               ),
                             );
