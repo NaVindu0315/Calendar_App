@@ -2,8 +2,8 @@ import 'package:calendar_navindu/Calendar.dart';
 import 'package:calendar_navindu/Screens/Calendar2.dart';
 import 'package:flutter/material.dart';
 
-class Spl_Screen extends StatelessWidget {
-  const Spl_Screen({Key? key}) : super(key: key);
+class Test_Dashboard extends StatelessWidget {
+  const Test_Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
