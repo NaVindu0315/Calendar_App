@@ -36,6 +36,11 @@ class _Calendar2State extends State<Calendar2> {
   ///map to store events
   Map<DateTime, List<Eventss>> events = {};
 
+  List<Eventss> _getEventsforDay(DateTime day) {
+    ///retreive all the events to display all the evennts
+    return events[day] ?? [];
+  }
+
   ///function for onday selected
   void _dayselected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -49,6 +54,11 @@ class _Calendar2State extends State<Calendar2> {
     super.initState();
     //_selectedday = _focuedday
     _selectedEvets = ValueNotifier(_getEventsforDay(today));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
