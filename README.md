@@ -1,16 +1,10 @@
-# calendar_navindu
 
-Calendar App for Mobile App Developer Practical
+Navindu Lakshan 
 
-## Getting Started
+6 Hours. Please Check My - [commit History](https://github.com/NaVindu0315/Calendar_App/graphs/contributors?from=2024-05-26&to=2024-06-06&type=c)
 
-This project is a starting point for a Flutter application.
+GitHub - [Calendar App](https://github.com/NaVindu0315/Calendar_App)
 
-A few resources to get you started if this is your first Flutter project:
+Youtube - [Calendar App](https://youtu.be/6WwyUsneUYM)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+APK - [APK](https://drive.google.com/file/d/10MnWrRvB1T42ojfW3PsX0i44_jIu5WGS/view?usp=sharing)

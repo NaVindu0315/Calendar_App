@@ -89,6 +89,7 @@ class _Calendar2State extends State<Calendar2> {
     _selectedDay = _focusedDay;
     _selectedEvets = ValueNotifier(_getEventsforDay(_selectedDay!));
     _holidayss = ValueNotifier(_getholidaysforDay(_selectedDay!));
+    // selectedvalue = "15 minutes";
   }
 
   @override
@@ -96,6 +97,7 @@ class _Calendar2State extends State<Calendar2> {
     super.dispose();
   }
 
+  String _selectedValue = 'option1';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -187,6 +189,40 @@ class _Calendar2State extends State<Calendar2> {
                             labelText: 'Note',
                             // Add hint here
                           ),
+                        ),
+                        Text(
+                          'Notify Me Before ',
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                        RadioListTile(
+                          title: Text('15 Minutes'),
+                          value: 'option1',
+                          groupValue: _selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedValue = value as String;
+                            });
+                          },
+                        ),
+                        RadioListTile(
+                          title: Text('1 Hr'),
+                          value: 'option2',
+                          groupValue: _selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedValue = value as String;
+                            });
+                          },
+                        ),
+                        RadioListTile(
+                          title: Text('1 Day'),
+                          value: 'option3',
+                          groupValue: _selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedValue = value as String;
+                            });
+                          },
                         ),
                       ],
                     ),

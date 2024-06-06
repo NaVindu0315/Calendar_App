@@ -41,7 +41,7 @@ class Splash_Screen extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: Test_Dashboard(),
+      nextScreen: Calendar_Widget(),
       splashIconSize: 400,
       backgroundColor: Colors.blue,
     );
