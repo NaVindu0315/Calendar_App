@@ -1,3 +1,4 @@
+import 'package:calendar_navindu/Classes/Holiday.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -31,16 +32,24 @@ class _Calendar2State extends State<Calendar2> {
   ///to display
   late final ValueNotifier<List<Eventss>> _selectedEvets;
 
+  late final ValueNotifier<List<Holidays>> _holidayss;
+
   ///events end
 
   DateTime today = DateTime.now();
 
   ///map to store events
   Map<DateTime, List<Eventss>> events = {};
+  Map<DateTime, List<Holidays>> holievents = {};
 
   List<Eventss> _getEventsforDay(DateTime day) {
     ///retreive all the events to display all the evennts
     return events[day] ?? [];
+  }
+
+  List<Holidays> _getholidaysforDay(DateTime day) {
+    ///retreive all the events to display all the evennts
+    return holievents[day] ?? [];
   }
 
   ///function for onday selected
@@ -56,6 +65,7 @@ class _Calendar2State extends State<Calendar2> {
         _selectedDay = selectedDay;
         _focusedDay = focusedDay;
         _selectedEvets.value = _getEventsforDay(selectedDay);
+        _holidayss.value = _getholidaysforDay(selectedDay);
       });
     }
   }
@@ -73,6 +83,7 @@ class _Calendar2State extends State<Calendar2> {
     super.initState();
     _selectedDay = _focusedDay;
     _selectedEvets = ValueNotifier(_getEventsforDay(_selectedDay!));
+    _holidayss = ValueNotifier(_getholidaysforDay(_selectedDay!));
   }
 
   @override
@@ -112,28 +123,41 @@ class _Calendar2State extends State<Calendar2> {
                             Navigator.pop(context);
                           },
                           child: Text("Add Event")),
+
+                      ///public and Bank
                       ElevatedButton.icon(
-                        icon: Icon(Icons.add), // Add your icon here
-                        label: Text(
-                            'PUblic and Bank'), // Add your button text here
+                        icon: Icon(Icons.circle),
+                        label: Text('Public and Bank Holiday '), //
                         onPressed: () {
-                          // Add your button press action here
+                          //
+                          /* events.addAll({
+                            _selectedDay!: [Eventss(_eventcontroller.text)]
+                          });*/
+
+                          holievents.addAll({
+                            _selectedDay!: [Holidays('Public and Bank Holiday')]
+                          });
+
+                          /*_selectedEvets.value =
+                              _getEventsforDay(_selectedDay!);*/
+
+                          _holidayss.value = _getholidaysforDay(_selectedDay!);
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue, // Button color
+                          primary: Colors.red, // Button color
                           onPrimary: Colors.white, // Text color
                         ),
                       ),
                       ElevatedButton.icon(
-                        icon: Icon(Icons.add), // Add your icon here
-                        label: Text('Mercantile'), // Add your button text here
+                        icon: Icon(Icons.shopping_bag_outlined), //
+                        label: Text('Mercantile Holiday'), //
                         onPressed: () {
-                          // Add your button press action here
+                          //
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue, // Button color
+                          primary: Colors.red, // Button color
                           onPrimary: Colors.white, // Text color
                         ),
                       ),
@@ -210,8 +234,8 @@ class _Calendar2State extends State<Calendar2> {
                 ///holiday
                 Flexible(
                   fit: FlexFit.loose,
-                  child: ValueListenableBuilder<List<Eventss>>(
-                    valueListenable: _selectedEvets,
+                  child: ValueListenableBuilder<List<Holidays>>(
+                    valueListenable: _holidayss,
                     builder: (context, value, _) {
                       return Container(
                         height: 200,
@@ -227,7 +251,7 @@ class _Calendar2State extends State<Calendar2> {
                               ),
                               child: ListTile(
                                 onTap: () => print(""),
-                                title: Text('${value[index].title}'),
+                                title: Text('${value[index].holidayname}'),
                               ),
                             );
                           },
