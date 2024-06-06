@@ -308,14 +308,21 @@ class _Calendar2State extends State<Calendar2> {
                               margin: EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 4),
                               decoration: BoxDecoration(
+                                color: Color(0xff237ACC),
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: ListTile(
                                 onTap: () => print(""),
-                                title: Text('${value[index].title}'),
+                                title: Text(
+                                  '${value[index].title}',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                ),
                                 subtitle: Text(
                                   '${value[index].note}\nDate: ${value[index].strtdate}',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.white),
                                   maxLines:
                                       2, // Limit subtitle lines to avoid overflow
                                 ),
