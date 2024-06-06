@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:calendar_navindu/Screens/Calendar2.dart';
+import 'package:calendar_navindu/Screens/Test_Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -40,7 +41,7 @@ class Splash_Screen extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: Calendar_Widget(),
+      nextScreen: Test_Dashboard(),
       splashIconSize: 400,
       backgroundColor: Colors.blue,
     );

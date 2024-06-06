@@ -95,6 +95,25 @@ class _Calendar2State extends State<Calendar2> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0),
+            ),
+          ),
+          leading: null,
+          actions: <Widget>[],
+          title: Text(
+            '                 Calendar',
+            style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+          backgroundColor: Color(0xff237ACC),
+        ),
+
         ///floating action button to add events
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -177,6 +196,31 @@ class _Calendar2State extends State<Calendar2> {
                   height: 40.0,
                 ),
                 Text('Selected : ' + today.toString()),*/
+
+                SizedBox(
+                  height: 40.0,
+                ),
+                Container(
+                  child: TableCalendar(
+                    rowHeight: 70,
+                    headerStyle: HeaderStyle(
+                        formatButtonVisible: false, titleCentered: true),
+                    availableGestures: AvailableGestures.all,
+                    focusedDay: _focusedDay,
+                    selectedDayPredicate: (day) => isSameDay(_focusedDay, day),
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2099, 12, 31),
+                    onDaySelected: _dayselected,
+                    onPageChanged: (focusedDay) {
+                      _focusedDay = focusedDay;
+                    },
+                    eventLoader: _getEventsforDay,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 Flexible(
                   fit: FlexFit.loose,
                   child: ValueListenableBuilder<List<Holidays>>(
@@ -204,30 +248,6 @@ class _Calendar2State extends State<Calendar2> {
                       );
                     },
                   ),
-                ),
-                SizedBox(
-                  height: 40.0,
-                ),
-                Container(
-                  child: TableCalendar(
-                    rowHeight: 70,
-                    headerStyle: HeaderStyle(
-                        formatButtonVisible: false, titleCentered: true),
-                    availableGestures: AvailableGestures.all,
-                    focusedDay: _focusedDay,
-                    selectedDayPredicate: (day) => isSameDay(_focusedDay, day),
-                    startingDayOfWeek: StartingDayOfWeek.monday,
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2099, 12, 31),
-                    onDaySelected: _dayselected,
-                    onPageChanged: (focusedDay) {
-                      _focusedDay = focusedDay;
-                    },
-                    eventLoader: _getEventsforDay,
-                  ),
-                ),
-                SizedBox(
-                  height: 10.0,
                 ),
 
                 Flexible(
