@@ -4,6 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../Classes/event.dart';
 import '../Services/local_notifications.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Calendar_Widget extends StatelessWidget {
   const Calendar_Widget({Key? key}) : super(key: key);
