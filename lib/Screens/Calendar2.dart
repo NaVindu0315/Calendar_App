@@ -231,7 +231,7 @@ class _Calendar2State extends State<Calendar2> {
                       ElevatedButton.icon(
                         icon: Icon(Icons.event),
                         label: Text('Add Event'), //
-                        onPressed: () {
+                        onPressed: () async {
                           events.addAll({
                             _selectedDay!: [
                               Eventss(
@@ -248,6 +248,23 @@ class _Calendar2State extends State<Calendar2> {
                               title: _eventcontroller.text,
                               body: "Event Added to Calendar",
                               payload: _notecontroller.text);
+
+                          // Create a Firestore instance
+                          final firestore = FirebaseFirestore.instance;
+
+                          // Create a collection reference
+                          final eventsCollection =
+                              firestore.collection('events');
+
+                          // Add the event to the collection
+                          await eventsCollection.add({
+                            'title': _eventcontroller.text,
+                            'note': _notecontroller.text,
+                            'strtdate': _selectedDay!,
+                            'strtime': starttime.format(context),
+                            'entime': endtime.format(context),
+                          });
+
                           _eventcontroller.clear();
                           _notecontroller.clear();
                           Navigator.pop(context);
