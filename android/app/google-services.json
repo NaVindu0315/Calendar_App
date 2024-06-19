@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "922498626140",
+    "project_id": "calendar-1f029",
+    "storage_bucket": "calendar-1f029.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922498626140:android:e984ba27366d6eed47ec99",
+        "android_client_info": {
+          "package_name": "com.navindu.calendar_navindu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcpf30OkraqGtcrP0gtry1965QlUoBZQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

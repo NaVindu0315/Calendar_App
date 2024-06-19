@@ -41,6 +41,7 @@ dependencies:
   flutter_local_notifications: ^15.1.1
   flutter_timezone: ^1.0.7
   rxdart: ^0.27.7
+  firebase_core: ^2.24.0
 
 
 
